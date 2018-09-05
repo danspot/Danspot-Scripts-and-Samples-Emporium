@@ -91,7 +91,8 @@ Write-Output "Security Group ID: $securityGroupID"
 $securityGroupMembers = Get-MsolGroupMember -GroupObjectId $securityGroupID
 
 # loop through all Security Group members and add them to a list
-# might be more efficient (from a service API perspective) to have an inner foreach loop that verifies the user is not in the O365 Group
+# might be more efficient (from a service API perspective) to have an inner foreach 
+# loop that verifies the user is not in the O365 Group
 Write-Output "Loading list of Security Group members"
 $securityGroupMembersToAdd = New-Object System.Collections.ArrayList
 foreach ($securityGroupMember in $securityGroupMembers) 
@@ -108,7 +109,6 @@ foreach ($securityGroupMember in $securityGroupMembers)
 # this might need to be broken into multiple calls depending on API limitations
 Write-Output "Adding Security Group members to O365 Group"
 Add-UnifiedGroupLinks -Identity $O365GroupID -LinkType Members -Links $securityGroupMembersToAdd
-
 
 # loop through the O365 Group and remove anybody who is not in the security group
 Write-Output "Looking for O365 Group members who are not in Secuity Group"
