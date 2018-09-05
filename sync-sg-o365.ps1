@@ -111,7 +111,7 @@ Write-Output "Adding Security Group members to O365 Group"
 Add-UnifiedGroupLinks -Identity $O365GroupID -LinkType Members -Links $securityGroupMembersToAdd
 
 # loop through the O365 Group and remove anybody who is not in the security group
-Write-Output "Looking for O365 Group members who are not in Secuity Group"
+Write-Output "Looking for O365 Group members who are not in Security Group"
 $O365GroupMembersToRemove = New-Object System.Collections.ArrayList
 foreach ($O365GroupMember in $O365GroupMembers) {
         $userFound = 0
